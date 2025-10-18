@@ -1,0 +1,10 @@
+C:\Users\Андрей\source\repos\MO-31-2-Lioznov-Vorobyshek\bin\Debug\MO-31-2-Lioznov-Vorobyshek.exe.config
+C:\Users\Андрей\source\repos\MO-31-2-Lioznov-Vorobyshek\bin\Debug\MO-31-2-Lioznov-Vorobyshek.exe
+C:\Users\Андрей\source\repos\MO-31-2-Lioznov-Vorobyshek\bin\Debug\MO-31-2-Lioznov-Vorobyshek.pdb
+C:\Users\Андрей\source\repos\MO-31-2-Lioznov-Vorobyshek\obj\Debug\MO-31-2-Lioznov-Vorobyshek.csproj.AssemblyReference.cache
+C:\Users\Андрей\source\repos\MO-31-2-Lioznov-Vorobyshek\obj\Debug\MO_31_2_Lioznov_Vorobyshek.FormMain.resources
+C:\Users\Андрей\source\repos\MO-31-2-Lioznov-Vorobyshek\obj\Debug\MO_31_2_Lioznov_Vorobyshek.Properties.Resources.resources
+C:\Users\Андрей\source\repos\MO-31-2-Lioznov-Vorobyshek\obj\Debug\MO-31-2-Lioznov-Vorobyshek.csproj.GenerateResource.cache
+C:\Users\Андрей\source\repos\MO-31-2-Lioznov-Vorobyshek\obj\Debug\MO-31-2-Lioznov-Vorobyshek.csproj.CoreCompileInputs.cache
+C:\Users\Андрей\source\repos\MO-31-2-Lioznov-Vorobyshek\obj\Debug\MO-31-2-Lioznov-Vorobyshek.exe
+C:\Users\Андрей\source\repos\MO-31-2-Lioznov-Vorobyshek\obj\Debug\MO-31-2-Lioznov-Vorobyshek.pdb
