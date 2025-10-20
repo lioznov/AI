@@ -1,23 +1,21 @@
 ﻿namespace MO_31_2_Lioznov_Vorobyshek.NeuroNet
 {
-    enum MemoryMode // режимы работы памяти 
+    enum MemoryMode //режим работы памяти
     {
-        GET, // считывание памяти
-        SET, // сохранение памяти
-        INIT // инициализация 
+        GET, //считывание памяти
+        SET, //сохранение
+        INIT //инициализация
     }
-    enum NeuronType // тип нейрона
+    enum NeuronType //тип нейрона
     {
-        Hidden, // скрытый
-        Output // выходной
+        Hidden, //скрытый нейрон
+        Output //выходной нейрон
     }
-    enum NetworkMode //
+
+    enum NetworkMode
     {
-        Train, // обучение 
-        Test, // проверка
-        Demo // распознавание
-    }
-    internal class ModelEnums
-    {
+        Train, //обученние
+        Test, //тренировка
+        Demo //распознавание
     }
 }

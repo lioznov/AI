@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using MO_31_2_Lioznov_Vorobyshek.NeuroNet;
 
+
 namespace MO_31_2_Lioznov_Vorobyshek
 {
     public partial class FormMain : Form
@@ -17,7 +18,7 @@ namespace MO_31_2_Lioznov_Vorobyshek
         // Добавляем поля слоёв
         private Layer hiddenLayer;
         private Layer outputLayer;
-        private Network network;
+        private Network network; // объявление нейросети
 
 
 
@@ -75,9 +76,11 @@ namespace MO_31_2_Lioznov_Vorobyshek
             File.AppendAllText(path, tmpStr);
         }
 
-        private void Weights_Click(object sender, EventArgs e)
+        private void Button_Recognize_Click(object sender, EventArgs e)
         {
-            hiddenLayer = new NeuroNet.HiddenLayer(10, 15, NeuroNet.NeuronType.Hidden, "Hidden");
+            network.ForwardPass(network, inputPixels);
+            label_out.Text = network.Fact.ToList().IndexOf(network.Fact.Max()).ToString();
+            label_probability.Text = (100 * network.Fact.Max()).ToString("0.00") + " %";
         }
     }
 }

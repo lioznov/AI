@@ -4,6 +4,7 @@ using System.IO;
 using System.Windows.Forms;
 using MO_31_2_Lioznov_Vorobyshek.NeuroNet;
 
+
 namespace MO_31_2_Lioznov_Vorobyshek.NeuroNet
 {
     abstract class Layer
@@ -64,49 +65,47 @@ namespace MO_31_2_Lioznov_Vorobyshek.NeuroNet
             }
         }
 
+
         //Метод работы с массивом синаптических весов слоя
         public double[,] WeightInitialize(MemoryMode mm, string path)
         {
             char[] delim = new char[] { ';', ' ' };
+            string tmpStr;
             string[] tmpStrWeights;
             double[,] weights = new double[numofneurons, numofprevneurons + 1];
 
+
             switch (mm)
             {
-                
                 case MemoryMode.GET:
-                    tmpStrWeights = File.ReadAllLines(path);        // считывание строк текстового файла csv весов нейрона (в tmpStrWeights каждый i-ый элемент это строка весов)
-                    string[] memory_elemnt; // массив, где каждый i-ый элемент это один вес нейрона (берётся одна строка из tmpStrWeights)
-
-                    // строка весов нейронов
+                    tmpStrWeights = File.ReadAllLines(path); //читаем все строки файла
+                    string[] memory_element; //временный массив, хранящий веса одного нейрона в виде строк
                     for (int i = 0; i < numofneurons; i++)
                     {
-                        memory_elemnt = tmpStrWeights[i].Split(delim);  // разбивает строку
-                        // каждый отдельный вес нейрона
+                        memory_element = tmpStrWeights[i].Split(delim);
                         for (int j = 0; j < numofprevneurons + 1; j++)
                         {
-                            weights[i, j] = double.Parse(memory_elemnt[j].Replace(',', '.'),
+                            weights[i, j] = double.Parse(memory_element[j].Replace(',', '.'),
                                 System.Globalization.CultureInfo.InvariantCulture);
                         }
                     }
                     break;
 
-                // парсинг в строковой формат веса нейронов в csv (обратный MemoryMode.GET) - сохраняет готовые веса нейронов
+
                 case MemoryMode.SET:
-                    tmpStrWeights = new string[numofneurons]; // создаём строку из весов нейрона (tmpStrWeights это массив, где каждый i-ый элемент это строка весов) 
+                    tmpStr = "";
                     for (int i = 0; i < numofneurons; i++)
                     {
-                        string[] memory_elemnt2 = new string[numofprevneurons + 1];
+                        string[] tmpRow = new string[numofprevneurons + 1];
                         for (int j = 0; j < numofprevneurons + 1; j++)
                         {
-                            memory_elemnt2[j] = neurons[i].Weights[j]
-                                .ToString(System.Globalization.CultureInfo.InvariantCulture)
-                                .Replace('.', ',');
+                            tmpRow[j] = weights[i, j].ToString(System.Globalization.CultureInfo.InvariantCulture);
                         }
-                        tmpStrWeights[i] = string.Join(";", memory_elemnt2);
+                        tmpStr += string.Join(";", tmpRow) + "\n";
                     }
-                    File.WriteAllLines(path, tmpStrWeights);
+                    File.WriteAllText(path, tmpStr);
                     break;
+
 
                 case MemoryMode.INIT:
                     Random random = new Random();
@@ -115,38 +114,38 @@ namespace MO_31_2_Lioznov_Vorobyshek.NeuroNet
                         double sum = 0.0;
                         double squaredSum = 0.0;
 
+                        //Генерация весов
                         for (int j = 0; j < numofprevneurons + 1; j++)
                         {
-                            // диапазон [-1, +1]
                             weights[i, j] = random.NextDouble() * 2.0 - 1.0;
-
                             sum += weights[i, j];
                             squaredSum += weights[i, j] * weights[i, j];
                         }
 
+                        //Вычисляем среднее и дисперсию
                         double mean = sum / (numofprevneurons + 1);
                         double variance = (squaredSum / (numofprevneurons + 1)) - (mean * mean);
                         double root = Math.Sqrt(variance);
 
+                        //Нормализуем веса
                         for (int j = 0; j < numofprevneurons + 1; j++)
                         {
                             weights[i, j] = (weights[i, j] - mean) / root;
                         }
                     }
 
-                    string[] lines = new string[numofneurons];
+                    //Сохранение весов
+                    tmpStr = "";
                     for (int i = 0; i < numofneurons; i++)
                     {
-                        string[] row = new string[numofprevneurons + 1];
+                        string[] tmpRow = new string[numofprevneurons + 1];
                         for (int j = 0; j < numofprevneurons + 1; j++)
                         {
-                            row[j] = weights[i, j]
-                                .ToString(System.Globalization.CultureInfo.InvariantCulture)
-                                .Replace('.', ',');
+                            tmpRow[j] = weights[i, j].ToString(System.Globalization.CultureInfo.InvariantCulture);
                         }
-                        lines[i] = string.Join(";", row);
+                        tmpStr += string.Join(";", tmpRow) + "\n";
                     }
-                    File.WriteAllLines(path, lines);
+                    File.WriteAllText(path, tmpStr);
                     break;
             }
             return weights;
@@ -155,3 +154,9 @@ namespace MO_31_2_Lioznov_Vorobyshek.NeuroNet
         abstract public double[] BackwardPass(double[] stuff); //и обратных
     }
 }
+
+
+//как генерируется синаптические веса
+// Синаптические веса должны быть случайными значениями от -1 до +1
+// У каждого нейрона синаптические веса и порог, среднее мат ожидание должно быть = 0
+// Среднее квадратичное отклонение должно быть = 1
