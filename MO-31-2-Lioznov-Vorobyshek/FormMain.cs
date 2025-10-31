@@ -82,5 +82,12 @@ namespace MO_31_2_Lioznov_Vorobyshek
             label_out.Text = network.Fact.ToList().IndexOf(network.Fact.Max()).ToString();
             label_probability.Text = (100 * network.Fact.Max()).ToString("0.00") + " %";
         }
+
+        private void ButtonTrain_Click(object sender, EventArgs e)
+        {
+            network.Train(network);
+
+            MessageBox.Show("Обучение успешно завершено", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

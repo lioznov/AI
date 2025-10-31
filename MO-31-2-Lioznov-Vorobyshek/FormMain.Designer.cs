@@ -49,6 +49,7 @@
             this.label_out = new System.Windows.Forms.Label();
             this.label_probability = new System.Windows.Forms.Label();
             this.Button_Recognize = new System.Windows.Forms.Button();
+            this.ButtonTrain = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_NecesseryOutput)).BeginInit();
             this.SuspendLayout();
             // 
@@ -265,7 +266,7 @@
             this.label_out.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label_out.Location = new System.Drawing.Point(16, 45);
             this.label_out.Name = "label_out";
-            this.label_out.Size = new System.Drawing.Size(71, 39);
+            this.label_out.Size = new System.Drawing.Size(70, 38);
             this.label_out.TabIndex = 19;
             this.label_out.Text = "Out";
             // 
@@ -275,7 +276,7 @@
             this.label_probability.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label_probability.Location = new System.Drawing.Point(99, 45);
             this.label_probability.Name = "label_probability";
-            this.label_probability.Size = new System.Drawing.Size(229, 39);
+            this.label_probability.Size = new System.Drawing.Size(220, 38);
             this.label_probability.TabIndex = 20;
             this.label_probability.Text = "Вероятность ";
             // 
@@ -289,11 +290,22 @@
             this.Button_Recognize.UseVisualStyleBackColor = true;
             this.Button_Recognize.Click += new System.EventHandler(this.Button_Recognize_Click);
             // 
+            // ButtonTrain
+            // 
+            this.ButtonTrain.Location = new System.Drawing.Point(89, 402);
+            this.ButtonTrain.Name = "ButtonTrain";
+            this.ButtonTrain.Size = new System.Drawing.Size(75, 23);
+            this.ButtonTrain.TabIndex = 22;
+            this.ButtonTrain.Text = "Обучить";
+            this.ButtonTrain.UseVisualStyleBackColor = true;
+            this.ButtonTrain.Click += new System.EventHandler(this.ButtonTrain_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(340, 413);
+            this.ClientSize = new System.Drawing.Size(1061, 436);
+            this.Controls.Add(this.ButtonTrain);
             this.Controls.Add(this.Button_Recognize);
             this.Controls.Add(this.label_probability);
             this.Controls.Add(this.label_out);
@@ -346,6 +358,7 @@
         private System.Windows.Forms.Label label_out;
         private System.Windows.Forms.Label label_probability;
         private System.Windows.Forms.Button Button_Recognize;
+        private System.Windows.Forms.Button ButtonTrain;
     }
 }
 
