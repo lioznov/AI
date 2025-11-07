@@ -87,6 +87,11 @@ namespace MO_31_2_Lioznov_Vorobyshek
         {
             network.Train(network);
 
+            for(int i=0;i<network.E_error_avr.Length;i++)
+            {
+                chart_Eavr.Series[0].Points.AddY(network.E_error_avr[i]);
+            }
+
             MessageBox.Show("Обучение успешно завершено", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }

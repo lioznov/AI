@@ -29,28 +29,28 @@
         public void Train(Network net)
         {
             net.input_layer = new InputLayer(NetworkMode.Train);
-            int epoches = 10;
+            int epoches = 30;
             double tmpSumError;
             double[] errors;
             double[] temp_gsums1;
             double[] temp_gsums2;
 
             e_error_avr = new double[epoches];
-            for(int k=0;k<epoches;k++)
+            for (int k = 0; k < epoches; k++)
             {
                 e_error_avr[k] = 0;
                 net.input_layer.Shuffling_Array_Rows(net.input_layer.Trainset);
-                for(int i=0;i<net.input_layer.Trainset.GetLength(0);i++)
+                for (int i = 0; i < net.input_layer.Trainset.GetLength(0); i++)
                 {
                     double[] tmpTrain = new double[15];
-                    for(int j = 0;j< tmpTrain.Length;j++)
+                    for (int j = 0; j < tmpTrain.Length; j++)
                         tmpTrain[j] = net.input_layer.Trainset[i, j + 1];
 
                     ForwardPass(net, tmpTrain);
 
                     tmpSumError = 0;
                     errors = new double[net.fact.Length];
-                    for(int x = 0; x < errors.Length;x++)
+                    for (int x = 0; x < errors.Length; x++)
                     {
                         if (x == net.input_layer.Trainset[i, 0])
                             errors[x] = 1.0 - net.fact[x];

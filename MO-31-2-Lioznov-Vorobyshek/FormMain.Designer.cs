@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -50,7 +54,9 @@
             this.label_probability = new System.Windows.Forms.Label();
             this.Button_Recognize = new System.Windows.Forms.Button();
             this.ButtonTrain = new System.Windows.Forms.Button();
+            this.chart_Eavr = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_NecesseryOutput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_Eavr)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -300,11 +306,34 @@
             this.ButtonTrain.UseVisualStyleBackColor = true;
             this.ButtonTrain.Click += new System.EventHandler(this.ButtonTrain_Click);
             // 
+            // chart_Eavr
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart_Eavr.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart_Eavr.Legends.Add(legend1);
+            this.chart_Eavr.Location = new System.Drawing.Point(325, 12);
+            this.chart_Eavr.Name = "chart_Eavr";
+            series1.BorderWidth = 3;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart_Eavr.Series.Add(series1);
+            this.chart_Eavr.Size = new System.Drawing.Size(707, 449);
+            this.chart_Eavr.TabIndex = 23;
+            this.chart_Eavr.Text = "chart1";
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            title1.Name = "Title1";
+            title1.Text = "График средних энергии ошибок";
+            this.chart_Eavr.Titles.Add(title1);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1061, 436);
+            this.ClientSize = new System.Drawing.Size(1044, 473);
+            this.Controls.Add(this.chart_Eavr);
             this.Controls.Add(this.ButtonTrain);
             this.Controls.Add(this.Button_Recognize);
             this.Controls.Add(this.label_probability);
@@ -330,6 +359,7 @@
             this.Name = "FormMain";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_NecesseryOutput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_Eavr)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -359,6 +389,7 @@
         private System.Windows.Forms.Label label_probability;
         private System.Windows.Forms.Button Button_Recognize;
         private System.Windows.Forms.Button ButtonTrain;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart_Eavr;
     }
 }
 

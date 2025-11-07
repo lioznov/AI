@@ -15,8 +15,8 @@ namespace MO_31_2_Lioznov_Vorobyshek.NeuroNet
         string pathFileWeights; //путь к файлу саниптическов весов
         protected int numofneurons; //число нейронов текущего слоя
         protected int numofprevneurons; //число нейронов предыдущего слоя
-        protected const double learningrate = 0.060; //скорость обучения
-        protected const double momentum = 0.050d; //момент инерции
+        protected const double learningrate = 0.0005; //скорость обучения
+        protected const double momentum = 0.006; //момент инерции
         protected double[,] lastdeltaweights; //веса предыдущей итерации
         protected Neuron[] neurons; //массив нейронов текущего слоя
 
